@@ -1,0 +1,112 @@
+// swift-tools-version: 6.0
+
+import PackageDescription
+
+let package = Package(
+    name: "${APP_NAME}Modules",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14),
+    ],
+    products: [
+        // MARK: - Core Modules
+        .library(name: "CoreModel", targets: ["CoreModel"]),
+        .library(name: "CoreData", targets: ["CoreData"]),
+        .library(name: "CoreDatabase", targets: ["CoreDatabase"]),
+        .library(name: "CoreNetwork", targets: ["CoreNetwork"]),
+        .library(name: "CoreUI", targets: ["CoreUI"]),
+        .library(name: "CoreDesignSystem", targets: ["CoreDesignSystem"]),
+        .library(name: "CoreCommon", targets: ["CoreCommon"]),
+        .library(name: "CoreTesting", targets: ["CoreTesting"]),
+
+        // MARK: - Feature Modules
+        // .library(name: "FeatureHome", targets: ["FeatureHome"]),
+        // .library(name: "FeatureSettings", targets: ["FeatureSettings"]),
+    ],
+    dependencies: [
+        // External dependencies
+    ],
+    targets: [
+        // MARK: - Core Targets
+
+        .target(name: "CoreModel"),
+
+        .target(
+            name: "CoreCommon",
+            dependencies: ["CoreModel"]
+        ),
+
+        .target(
+            name: "CoreNetwork",
+            dependencies: ["CoreModel"]
+        ),
+
+        .target(
+            name: "CoreDatabase",
+            dependencies: ["CoreModel"]
+        ),
+
+        .target(
+            name: "CoreData",
+            dependencies: [
+                "CoreModel",
+                "CoreDatabase",
+                "CoreNetwork",
+            ]
+        ),
+
+        .target(name: "CoreDesignSystem"),
+
+        .target(
+            name: "CoreUI",
+            dependencies: [
+                "CoreModel",
+                "CoreDesignSystem",
+            ]
+        ),
+
+        .target(
+            name: "CoreTesting",
+            dependencies: [
+                "CoreModel",
+                "CoreData",
+            ]
+        ),
+
+        // MARK: - Feature Targets
+
+        // .target(
+        //     name: "FeatureHome",
+        //     dependencies: [
+        //         "CoreData",
+        //         "CoreUI",
+        //         "CoreCommon",
+        //     ]
+        // ),
+
+        // .target(
+        //     name: "FeatureSettings",
+        //     dependencies: [
+        //         "CoreData",
+        //         "CoreUI",
+        //     ]
+        // ),
+
+        // MARK: - Test Targets
+
+        .testTarget(
+            name: "CoreDataTests",
+            dependencies: ["CoreData", "CoreTesting"]
+        ),
+
+        .testTarget(
+            name: "CoreDatabaseTests",
+            dependencies: ["CoreDatabase", "CoreTesting"]
+        ),
+
+        // .testTarget(
+        //     name: "FeatureHomeTests",
+        //     dependencies: ["FeatureHome", "CoreTesting"]
+        // ),
+    ]
+)
