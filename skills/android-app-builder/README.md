@@ -199,7 +199,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-Based on patterns and practices from:
+Originally based on [claude-android-skill](https://github.com/dpconde/claude-android-skill) by [@dpconde](https://github.com/dpconde), with additional changes and improvements.
+
+Also draws on patterns and practices from:
 - [NowInAndroid](https://github.com/android/nowinandroid) by Google
 - [Android Architecture Guidelines](https://developer.android.com/topic/architecture)
 - [Jetpack Compose Best Practices](https://developer.android.com/jetpack/compose)
