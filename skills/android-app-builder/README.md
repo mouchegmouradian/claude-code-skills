@@ -1,4 +1,6 @@
-# [WIP] Android Development Skill for Claude Code
+# Android Development Skill for Claude Code
+
+![Status](https://img.shields.io/badge/status-tested-brightgreen)
 
 A production-ready skill that enables Claude Code to build Android applications following Google's official architecture guidance and best practices from the [NowInAndroid](https://github.com/android/nowinandroid) reference app.
 

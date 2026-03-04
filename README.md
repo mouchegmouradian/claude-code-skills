@@ -4,11 +4,12 @@ A collection of production-ready [Claude Code](https://docs.anthropic.com/en/doc
 
 ## Skills
 
-| Skill | Description | Install |
-|-------|-------------|---------|
-| [iOS App Builder](skills/ios-app-builder/) | Production-quality iOS apps with SwiftUI, Swift Concurrency, SwiftData, and multi-module architecture | [Quick install](#installation) |
-| [Android App Builder](skills/android-app-builder/) | Production-quality Android apps with Jetpack Compose, Hilt, Room, and multi-module architecture following NowInAndroid patterns | [Quick install](#installation) |
-| [Product Requirements Builder](skills/product-requirements-builder/) | Structured PRDs and technical RFCs — from problem statement to implementation-ready specs | [Quick install](#installation) |
+| Skill | Status | Description | Install |
+|-------|--------|-------------|---------|
+| [iOS App Builder](skills/ios-app-builder/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Production-quality iOS apps with SwiftUI, Swift Concurrency, SwiftData, and multi-module architecture | [Quick install](#installation) |
+| [Android App Builder](skills/android-app-builder/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Production-quality Android apps with Jetpack Compose, Hilt, Room, and multi-module architecture following NowInAndroid patterns | [Quick install](#installation) |
+| [Product Requirements Builder](skills/product-requirements-builder/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Structured PRDs and technical RFCs — from problem statement to implementation-ready specs | [Quick install](#installation) |
+| [ZETIC MLange SDK](skills/zetic-mlange/) | ![Status](https://img.shields.io/badge/status-untested-yellow) | On-device AI inference for Android & iOS — general models, LLMs, and HuggingFace integration with NPU acceleration | [Quick install](#installation) |
 
 ## What Are Claude Code Skills?
 
@@ -18,29 +19,44 @@ Think of them as "expert knowledge packs" for Claude.
 
 ## Installation
 
-### Install all skills
+### Install all skills (copy)
 
 ```bash
 git clone https://github.com/mouchegmouradian/claude-code-skills.git
 cp -r claude-code-skills/skills/* ~/.claude/skills/
 ```
 
-### Install a single skill
+### Install a single skill (copy)
 
 ```bash
 git clone https://github.com/mouchegmouradian/claude-code-skills.git
 cp -r claude-code-skills/skills/<skill-name> ~/.claude/skills/
 ```
 
-Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `product-requirements-builder`.
+Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `product-requirements-builder`, `zetic-mlange`.
+
+### Install with symlinks (auto-update)
+
+Symlink the skills so they stay up to date — just `git pull` to get the latest changes.
+
+```bash
+git clone https://github.com/mouchegmouradian/claude-code-skills.git
+ln -s "$(pwd)/claude-code-skills/skills/"* ~/.claude/skills/
+```
+
+Or a single skill:
+
+```bash
+ln -s "$(pwd)/claude-code-skills/skills/<skill-name>" ~/.claude/skills/
+```
 
 ### Verify installation
 
 ```bash
-ls ~/.claude/skills/
+ls -la ~/.claude/skills/
 ```
 
-You should see the skill folder(s). Claude Code will automatically detect and load them in your next session.
+You should see the skill folder(s) (or symlinks pointing to them). Claude Code will automatically detect and load them in your next session.
 
 ## Usage
 
@@ -62,6 +78,12 @@ Once installed, skills activate automatically based on context. Just ask Claude 
 ```
 "Help me spec out a fitness tracking app"
 "Write an RFC for the authentication system"
+```
+
+**ZETIC MLange SDK**
+```
+"Integrate ZeticMLangeModel for on-device object detection"
+"Add LLM chat with streaming tokens using ZeticMLangeLLMModel"
 ```
 
 ## Contributing
