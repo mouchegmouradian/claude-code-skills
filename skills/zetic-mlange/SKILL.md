@@ -371,7 +371,7 @@ actor LLMModelActor {
 @Observable
 @MainActor
 final class ChatViewModel {
-    @Published var response = ""
+    private(set) var response = ""
     private let llmActor = LLMModelActor()
     private var generateTask: Task<Void, Error>?
 
