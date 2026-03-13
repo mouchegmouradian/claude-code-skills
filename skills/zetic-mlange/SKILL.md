@@ -242,8 +242,9 @@ actor MLangeModelActor {
 
 // --- In a ViewModel (@MainActor) ---
 
+@Observable
 @MainActor
-class InferenceViewModel: ObservableObject {
+final class InferenceViewModel {
     private let modelActor = MLangeModelActor()
 
     func setup() async throws {
@@ -367,9 +368,10 @@ actor LLMModelActor {
 
 // --- Usage in a @MainActor ViewModel ---
 
+@Observable
 @MainActor
-class ChatViewModel: ObservableObject {
-    @Published var response = ""
+final class ChatViewModel {
+    private(set) var response = ""
     private let llmActor = LLMModelActor()
     private var generateTask: Task<Void, Error>?
 
