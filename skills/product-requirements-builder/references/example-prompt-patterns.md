@@ -1,7 +1,12 @@
 # Prompt Patterns for Coding Agents
 
-After the PRD and RFCs are complete, use these patterns to feed work to
-coding agents (Claude Code, Cursor, Windsurf, etc.) effectively.
+These are lightweight prompt templates for quick, targeted tasks. For full
+implementation prompts (with codebase-aware file lists, step-by-step plans,
+and project conventions), use **Phase 6: Generate Implementation Prompt** in
+the main skill workflow instead.
+
+Use these patterns when you need a quick, focused prompt — for example, a
+single bug fix, a test pass, or a small slice of an RFC.
 
 ## Pattern 1: Single RFC Implementation
 

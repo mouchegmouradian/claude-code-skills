@@ -31,13 +31,46 @@ Requirements Progress:
 - [ ] Phase 3: RFC Breakdown — identify implementation areas
 - [ ] Phase 4: RFC Drafting — write each RFC
 - [ ] Phase 5: Review — validate completeness and consistency
+- [ ] Phase 6: Generate Prompt — create implementation prompts for coding agents
 ```
+
+### Output location and naming
+
+Save all documents in a `Product requirements/` directory at the project root.
+Ask the user if they prefer a different location. If a directory already exists
+with PRDs or RFCs, use that location instead.
+
+**Naming convention:**
+
+| Document | Filename |
+|----------|----------|
+| PRD | `PRD-[ProjectName].md` |
+| Architecture RFC | `RFC-000-architecture.md` |
+| Feature RFCs | `RFC-[NNN]-[slug].md` (e.g., `RFC-003-voice-capture.md`) |
+
+- Use zero-padded three-digit numbers: `001`, `002`, `012`
+- Slugs are lowercase, hyphen-separated, 2-4 words max
+- When adding RFCs to an existing project, continue the numbering sequence
 
 ### Phase 1: Discovery
 
-Interview the user to understand their product. Don't skip this — even a brief
-conversation dramatically improves the output. Adapt your questions to what the
-user has already shared; don't re-ask what's obvious from context.
+Before asking questions, **read the existing codebase** if one exists. Scan the
+project directory for:
+
+- Architecture patterns (MVVM, Clean Architecture, MVC, etc.)
+- Tech stack and frameworks in use
+- Existing data models, schemas, and entities
+- Services, APIs, and integrations already built
+- Naming conventions, DI approach, project structure
+- Existing PRDs or RFCs (check for a `Product requirements/`, `docs/`, `specs/`,
+  or `rfcs/` directory)
+
+This context prevents you from producing specs that conflict with the codebase.
+If a PRD already exists and the user wants to add a feature, skip to Phase 3
+(see "Adding an RFC to an existing project" below).
+
+Now interview the user. Adapt your questions to what the codebase and user have
+already told you — don't re-ask what's obvious from context.
 
 **Core questions** (ask what's missing, skip what's known):
 
@@ -49,6 +82,19 @@ user has already shared; don't re-ask what's obvious from context.
 6. **What exists already?** Any prior art, mockups, codebases, or competitor references?
 
 Capture answers in your working memory. You'll weave them into the PRD.
+
+#### Adding an RFC to an existing project
+
+If the project already has a PRD and the user wants to add a feature (not start
+from scratch):
+
+1. Read the existing PRD and all existing RFCs to understand current scope,
+   data models, glossary, and conventions
+2. Skip Phase 2 — the PRD exists
+3. Go to Phase 3 to define the new RFC's scope, checking for overlap with
+   existing RFCs
+4. Continue with Phase 4-6 as normal
+5. After drafting, update the PRD's Features Overview table with the new RFC
 
 ### Phase 2: PRD Draft
 
@@ -98,6 +144,22 @@ Adapt this to the project. A simple web app might need 3 RFCs. A cross-platform
 mobile app might need 6+. Always start with RFC-000 as the architecture overview
 that all other RFCs reference.
 
+**Implementation order**: After defining all RFCs, determine the order they
+should be implemented. List them with a one-line justification:
+
+```
+Implementation Order:
+1. RFC-000: Architecture — foundation everything else depends on
+2. RFC-001: Database & Models — data layer must exist before features
+3. RFC-002: Core Feature A — primary user value, validates the architecture
+4. RFC-004: API Integration — needed by Feature B
+5. RFC-003: Feature B — depends on API integration
+6. RFC-005: UI Polish — requires all features to be functional
+```
+
+Include this in the PRD's "Features Overview" section so the implementation
+agent knows what to build first.
+
 ### Phase 4: RFC Drafting
 
 Use the RFC template. See [templates/rfc-template.md](templates/rfc-template.md)
@@ -124,42 +186,90 @@ for the full template with section guidance.
 
 ### Phase 5: Review
 
-Before finalizing, validate:
+Before finalizing, **actively verify** each item — don't just eyeball it.
 
-- [ ] Every job story in the PRD maps to at least one RFC
-- [ ] Every data model field is consistent across PRD and all RFCs
-- [ ] No two RFCs overlap in scope
-- [ ] Each RFC has explicit "do not implement" boundaries
-- [ ] Glossary terms are used consistently everywhere
-- [ ] Edge cases are documented (not deferred)
-- [ ] Code samples match the declared tech stack
-- [ ] Performance targets are stated with acceptable ranges
+1. **Traceability check**: Read every JS-XXX job story in the PRD. For each one,
+   search the RFC files to confirm at least one RFC references it. List any
+   orphaned stories.
 
-## Prompt patterns for coding agents
+2. **Data model consistency**: Compare entity field names, types, and relationships
+   across the PRD and every RFC that references them. Flag any mismatches
+   (e.g., PRD says `categoryId: UUID` but RFC-003 says `category: String`).
 
-After the PRD and RFCs are complete, the user can feed individual RFCs to a
-coding agent. Recommend this pattern:
+3. **Scope overlap check**: For each RFC, read its "Scope Boundaries" section.
+   Flag any capability that appears in more than one RFC's "This RFC covers" list.
 
-```
-Based on RFC-001: Database Schema & Sync
+4. **Exclusion check**: Verify each RFC has an explicit "This RFC does NOT cover"
+   section with cross-references to sibling RFCs.
 
-Please implement the database schema and TypeScript interfaces.
+5. **Terminology consistency**: Pick the glossary terms from the PRD and search
+   all RFC files for variant spellings or synonyms (e.g., "Note" vs "Idea",
+   "Category" vs "Folder"). Fix inconsistencies.
 
-Files to create:
-- src/database/schema.ts
-- src/models/Idea.ts
-- src/models/Category.ts
-- src/database/migrations/001_initial.sql
+6. **Edge case coverage**: Confirm each RFC's Edge Cases section is populated
+   (not empty or placeholder). Check that error/failure scenarios are addressed,
+   not just happy paths.
 
-Follow [framework] best practices.
+7. **Tech stack alignment**: Verify code samples use the language, framework,
+   and libraries declared in the PRD's Technology Stack table.
 
-Do NOT implement:
-- API sync logic (that's RFC-006)
-- UI components (that's RFC-005)
-```
+8. **Performance targets**: Confirm specific numbers exist (not just "should be
+   fast") with acceptable ranges.
 
-This pattern gives the agent focused context, clear deliverables, and explicit
-boundaries.
+Present the review results to the user as a checklist with pass/fail for each
+item and details on anything that needs fixing.
+
+### Phase 6: Generate Implementation Prompt
+
+After all RFCs are reviewed and finalized, **ask the user**:
+
+> "Would you like me to generate a complete implementation prompt for any of these RFCs? You can paste it into a new Claude Code session to implement the feature."
+
+If the user says yes, ask which RFC(s) they want a prompt for (or offer to do all of them).
+
+**To generate the prompt, you must:**
+
+1. **Read the project codebase** — scan the actual project directory to identify:
+   - Existing files that will be modified or replaced
+   - Related services, utilities, or shared code the implementation will touch
+   - Project conventions (naming patterns, DI approach, architecture style)
+
+2. **Build the prompt** with these sections in order:
+
+   a. **Opening context** — tell the agent what RFC to implement and where to find it (absolute path)
+
+   b. **Files to read first** — list every existing file the agent should read before writing code:
+      - The RFC document itself
+      - All files that will be modified/replaced
+      - Related RFCs for cross-cutting context
+      - Services or utilities the implementation depends on
+
+   c. **Step-by-step implementation plan** — ordered steps with:
+      - Specific file changes (what to create, modify, rename, delete)
+      - Detailed instructions for each change (not just "implement X" — spell out the logic)
+      - Dependencies between steps (what must happen before what)
+      - "Build after each major step to catch errors early"
+
+   d. **Project conventions** — any patterns the agent must follow:
+      - Architecture patterns (MVVM, Clean Architecture, etc.)
+      - DI approach, state management, naming conventions
+      - Custom colors, design tokens, shared components
+      - Testing patterns, deployment targets
+      - Feature flags or configuration to respect
+
+3. **Format the prompt** as a single copyable block — the user should be able to paste it directly into a new Claude Code session with no edits needed.
+
+**What makes a good implementation prompt:**
+
+- **Absolute file paths** — no guessing, no relative paths from unknown roots
+- **Read before write** — always tell the agent to read existing code first
+- **Ordered steps** — numbered, with clear dependencies
+- **Specificity over brevity** — spell out exactly what each step involves (which structs to rename, which enum cases to add, which UI sections to build)
+- **Explicit exclusions** — "Do NOT touch X" or "That's handled in RFC-Y"
+- **Build verification** — remind the agent to build/test after each major step
+- **Plan file** — tell the agent to create a plan in `tasks/todo.md` first and mark items as it goes
+
+See [references/example-prompt-patterns.md](references/example-prompt-patterns.md) for simpler prompt patterns that can be used as building blocks.
 
 ## Adapting to project scale
 
