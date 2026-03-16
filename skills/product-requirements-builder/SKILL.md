@@ -227,6 +227,8 @@ After all RFCs are reviewed and finalized, **ask the user**:
 
 If the user says yes, ask which RFC(s) they want a prompt for (or offer to do all of them).
 
+**For large projects (3+ RFCs, parallel implementation):** generate a full orchestration prompt instead of per-RFC prompts. An orchestration prompt assigns the agent an orchestrator role: it defines phases, spawns one sub-agent per RFC, verifies integration between phases, and never writes code directly. Use the `orchestrator` skill to execute this kind of prompt. Mention this option to the user when the implementation scope warrants it.
+
 **To generate the prompt, you must:**
 
 1. **Read the project codebase** — scan the actual project directory to identify:
