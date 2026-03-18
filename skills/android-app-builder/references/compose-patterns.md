@@ -12,6 +12,28 @@ UI patterns following NowInAndroid and Material 3 guidelines.
 
 ## Screen Architecture
 
+> **Never pass a ViewModel directly into a composable.**
+> Composables should only receive plain state and lambda callbacks — not ViewModel instances.
+> Passing a ViewModel directly couples UI to the ViewModel, breaks Compose Previews, and violates separation of concerns.
+>
+> ```kotlin
+> // BAD — ViewModel passed directly into composable
+> @Composable
+> fun TopicRoute(viewModel: TopicViewModel = hiltViewModel()) {
+>     TopicScreen(viewModel)  // ❌ coupled, Preview requires Hilt, untestable in isolation
+> }
+>
+> // GOOD — collect state at Route level, pass plain data and callbacks down
+> @Composable
+> fun TopicRoute(viewModel: TopicViewModel = hiltViewModel()) {
+>     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+>     TopicScreen(
+>         uiState = uiState,           // ✅ plain data
+>         onFollowClick = viewModel::followTopic,  // ✅ lambda reference
+>     )
+> }
+> ```
+
 ### Route-Screen Pattern
 
 Separate navigation concerns from UI:
