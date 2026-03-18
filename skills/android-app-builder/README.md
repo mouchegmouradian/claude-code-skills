@@ -8,11 +8,12 @@ A production-ready skill that enables Claude Code to build Android applications 
 
 This skill provides Claude with comprehensive knowledge of modern Android development patterns, including:
 
+- **Complexity-aware architecture** that selects Simple, Standard, or Production patterns based on project signals — no over-engineering for small apps
 - **Clean Architecture** with UI, Domain, and Data layers
 - **Jetpack Compose** patterns and best practices
 - **Multi-module project structure** with convention plugins
 - **Offline-first architecture** with Room and reactive streams
-- **Dependency injection** with Hilt
+- **Dependency injection** with Hilt (Tier 2+) or companion object factory (Tier 1)
 - **Comprehensive testing** strategies
 
 ## Installation
@@ -42,6 +43,7 @@ Claude will follow the patterns and best practices defined in this skill.
 claude-android-skill/
 ├── SKILL.md                    # Main skill definition and quick reference
 ├── references/                 # Detailed documentation
+│   ├── complexity-tiers.md     # Tier detection and architecture blueprints
 │   ├── architecture.md         # UI, Domain, Data layers patterns
 │   ├── compose-patterns.md     # Jetpack Compose best practices
 │   ├── gradle-setup.md         # Build configuration & convention plugins
@@ -71,6 +73,7 @@ This skill teaches Claude to follow these key Android development principles:
 
 | Topic | File | Description |
 |-------|------|-------------|
+| Complexity Tiers | [complexity-tiers.md](references/complexity-tiers.md) | Tier detection, blueprints, migration paths |
 | Architecture | [architecture.md](references/architecture.md) | MVVM pattern, layers, repositories, use cases |
 | Compose UI | [compose-patterns.md](references/compose-patterns.md) | Screens, state hoisting, side effects, theming |
 | Build Setup | [gradle-setup.md](references/gradle-setup.md) | Convention plugins, version catalogs, configuration |
@@ -186,8 +189,8 @@ This skill configures projects with:
 - **Language**: Kotlin
 - **UI**: Jetpack Compose
 - **Architecture**: MVVM with UDF
-- **DI**: Hilt
-- **Database**: Room
+- **DI**: Hilt (Tier 2+) or companion object factory (Tier 1)
+- **Database**: Room (Tier 2+ when needed) or DataStore (Tier 1)
 - **Network**: Retrofit + Kotlinx Serialization
 - **Async**: Kotlin Coroutines + Flow
 - **Testing**: JUnit, Turbine, Compose Testing
