@@ -1,0 +1,52 @@
+name: {{app_name}}
+description: "{{app_description}}"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_bloc: ^9.1.1
+
+  # Navigation
+  go_router: ^17.1.0
+
+  # Dependency injection
+  get_it: 9.2.1
+  injectable: ^2.7.1+4
+
+  # Immutable data classes + sealed states
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.11.0
+
+  # Local database
+  drift: ^2.32.0
+  drift_flutter: ^0.3.0
+  sqlite3: ^3.2.0
+  path_provider: ^2.1.5
+  path: ^1.9.1
+
+  # Network
+  dio: ^5.9.2
+
+  # Local storage (simple preferences)
+  shared_preferences: ^2.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  bloc_test: ^9.0.0
+
+  # Code generation
+  build_runner: ^2.4.0
+  injectable_generator: ^2.7.0
+  freezed: ^2.5.0
+  json_serializable: ^6.8.0
+  drift_dev: ^2.20.0

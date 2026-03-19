@@ -1,0 +1,33 @@
+name: {{app_name}}
+description: "{{app_description}}"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_bloc: ^9.1.1
+
+  # Navigation
+  go_router: ^17.1.0
+
+  # Dependency injection (service locator)
+  get_it: 9.2.1
+
+  # Local storage (simple key-value)
+  shared_preferences: ^2.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  bloc_test: ^9.0.0
+
+flutter:
+  uses-material-design: true

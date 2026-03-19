@@ -10,6 +10,7 @@ A collection of production-ready [Claude Code](https://docs.anthropic.com/en/doc
 | [Android App Builder](skills/android-app-builder/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Production-quality Android apps with Jetpack Compose, Hilt, Room, and multi-module architecture following NowInAndroid patterns | [Quick install](#installation) |
 | [Product Requirements Builder](skills/product-requirements-builder/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Structured PRDs and technical RFCs — from problem statement to implementation-ready specs | [Quick install](#installation) |
 | [Orchestrator](skills/orchestrator/) | ![Status](https://img.shields.io/badge/status-new-blue) | Multi-agent coordination for large implementations — phases sub-agents by RFC, manages parallelization, and verifies integration between phases | [Quick install](#installation) |
+| [Flutter App Builder](skills/flutter-app-builder/) | ![Status](https://img.shields.io/badge/status-WIP-orange) | Production-quality Flutter apps with BLoC/Cubit, go_router, and complexity-aware architecture (Tier 1 simple / Tier 2 production) | [Quick install](#installation) |
 | [ZETIC MLange SDK](skills/zetic-mlange/) | ![Status](https://img.shields.io/badge/status-untested-yellow) | On-device AI inference for Android & iOS — general models, LLMs, and HuggingFace integration with NPU acceleration | [Quick install](#installation) |
 
 ## What Are Claude Code Skills?
@@ -34,7 +35,7 @@ git clone https://github.com/mouchegmouradian/claude-code-skills.git
 cp -r claude-code-skills/skills/<skill-name> ~/.claude/skills/
 ```
 
-Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `product-requirements-builder`, `orchestrator`, `zetic-mlange`.
+Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `flutter-app-builder`, `product-requirements-builder`, `orchestrator`, `zetic-mlange`.
 
 ### Install with symlinks (auto-update)
 
@@ -73,6 +74,13 @@ Once installed, skills activate automatically based on context. Just ask Claude 
 ```
 "Create a new feature module for user profile with Compose UI"
 "Set up Room database with offline-first repository pattern"
+```
+
+**Flutter App Builder** *(WIP)*
+```
+"Create a new Flutter app for tracking habits"
+"Add a user profile feature to my Flutter app"
+"Set up go_router with type-safe routes"
 ```
 
 **Product Requirements Builder**
