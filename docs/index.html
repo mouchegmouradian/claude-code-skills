@@ -281,7 +281,7 @@
             <h1><span>Claude Code Skills</span></h1>
             <p>Production-ready skills that give Claude deep domain expertise. Install once, get senior-engineer-quality output from natural language.</p>
             <div class="badge-row">
-                <span class="badge"><span class="dot green"></span>6 skills</span>
+                <span class="badge"><span class="dot green"></span>7 skills</span>
                 <span class="badge"><span class="dot purple"></span>MIT License</span>
                 <span class="badge"><span class="dot orange"></span>Claude Code</span>
             </div>
@@ -318,8 +318,14 @@
                     <span class="tag">SPM Modules</span>
                     <span class="tag">Swift Testing</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/ios-app-builder ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/ios-app-builder" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
@@ -340,8 +346,14 @@
                     <span class="tag">MVVM</span>
                     <span class="tag">Multi-module</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/android-app-builder ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/android-app-builder" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
@@ -361,8 +373,14 @@
                     <span class="tag">get_it</span>
                     <span class="tag">Drift</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/flutter-app-builder ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/flutter-app-builder" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
@@ -382,8 +400,14 @@
                     <span class="tag">Data Models</span>
                     <span class="tag">Task Breakdown</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/product-requirements-builder ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/product-requirements-builder" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
@@ -403,8 +427,40 @@
                     <span class="tag">RFC-driven</span>
                     <span class="tag">Parallel Build</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/orchestrator ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/orchestrator" ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon"><svg viewBox="0 0 24 24" fill="#e6edf3"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+                    <div>
+                        <h2>Skill Improvement</h2>
+                        <p>Automatically detects gaps in skills during sessions and proposes targeted patches — keeping skills accurate without manual maintenance.</p>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Self-Improving</span>
+                    <span class="tag">Patch Proposals</span>
+                    <span class="tag">Git Branch</span>
+                    <span class="tag">Session Feedback</span>
+                </div>
+                <div class="step-label">Copy (one-time):</div>
+                <div class="install-block">
+                    <code>cp -r claude-code-skills/skills/skill-improvement ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/skill-improvement" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
@@ -425,8 +481,14 @@
                     <span class="tag">LLM</span>
                     <span class="tag">GGUF</span>
                 </div>
+                <div class="step-label">Copy (one-time):</div>
                 <div class="install-block">
                     <code>cp -r claude-code-skills/skills/zetic-mlange ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/zetic-mlange" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
