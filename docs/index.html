@@ -281,7 +281,7 @@
             <h1><span>Claude Code Skills</span></h1>
             <p>Production-ready skills that give Claude deep domain expertise. Install once, get senior-engineer-quality output from natural language.</p>
             <div class="badge-row">
-                <span class="badge"><span class="dot green"></span>7 skills</span>
+                <span class="badge"><span class="dot green"></span>8 skills</span>
                 <span class="badge"><span class="dot purple"></span>MIT License</span>
                 <span class="badge"><span class="dot orange"></span>Claude Code</span>
             </div>
@@ -461,6 +461,33 @@
                 <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
                 <div class="install-block">
                     <code>ln -s "$(pwd)/claude-code-skills/skills/skill-improvement" ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon"><svg viewBox="0 0 24 24" fill="#e6edf3"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg></div>
+                    <div>
+                        <h2>Spec Sync <span style="font-size:0.7rem;color:var(--blue);background:#58a6ff22;border:1px solid var(--blue);border-radius:4px;padding:2px 7px;vertical-align:middle;font-weight:600;">NEW</span></h2>
+                        <p>Keep PRD and RFC documents in sync with code changes — detects drift via git diff and applies targeted edits. Includes a git-commit hook for automatic reminders.</p>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">PRD</span>
+                    <span class="tag">RFC</span>
+                    <span class="tag">Git Diff</span>
+                    <span class="tag">Drift Detection</span>
+                    <span class="tag">Doc Sync</span>
+                </div>
+                <div class="step-label">Copy (one-time):</div>
+                <div class="install-block">
+                    <code>cp -r claude-code-skills/skills/spec-sync ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/spec-sync" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>
