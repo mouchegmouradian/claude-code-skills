@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude Code Skills</title>
-    <meta name="description" content="Production-ready Claude Code skills for iOS, Android, and product development.">
+    <meta name="description" content="Production-ready Claude Code skills for iOS, Android, product development, and marketing copy.">
     <style>
         :root {
             --bg: #0d1117;
@@ -281,7 +281,7 @@
             <h1><span>Claude Code Skills</span></h1>
             <p>Production-ready skills that give Claude deep domain expertise. Install once, get senior-engineer-quality output from natural language.</p>
             <div class="badge-row">
-                <span class="badge"><span class="dot green"></span>8 skills</span>
+                <span class="badge"><span class="dot green"></span>9 skills</span>
                 <span class="badge"><span class="dot purple"></span>MIT License</span>
                 <span class="badge"><span class="dot orange"></span>Claude Code</span>
             </div>
@@ -488,6 +488,33 @@
                 <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
                 <div class="install-block">
                     <code>ln -s "$(pwd)/claude-code-skills/skills/spec-sync" ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon"><svg viewBox="0 0 24 24" fill="#e6edf3"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div>
+                    <div>
+                        <h2>Hero Copy <span style="font-size:0.7rem;color:var(--blue);background:#58a6ff22;border:1px solid var(--blue);border-radius:4px;padding:2px 7px;vertical-align:middle;font-weight:600;">NEW</span></h2>
+                        <p>Write high-converting landing page hero copy — headlines, subheadlines, and CTAs that promise transformation instead of listing features.</p>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Headlines</span>
+                    <span class="tag">CTAs</span>
+                    <span class="tag">Value Prop</span>
+                    <span class="tag">Landing Pages</span>
+                    <span class="tag">Copywriting</span>
+                </div>
+                <div class="step-label">Copy (one-time):</div>
+                <div class="install-block">
+                    <code>cp -r claude-code-skills/skills/hero-copy ~/.claude/skills/</code>
+                    <button class="copy-btn" onclick="copyText(this)">Copy</button>
+                </div>
+                <div class="step-label" style="margin-top: 10px;">Symlink (auto-updates with git pull):</div>
+                <div class="install-block">
+                    <code>ln -s "$(pwd)/claude-code-skills/skills/hero-copy" ~/.claude/skills/</code>
                     <button class="copy-btn" onclick="copyText(this)">Copy</button>
                 </div>
             </div>

@@ -13,6 +13,7 @@ A collection of production-ready [Claude Code](https://docs.anthropic.com/en/doc
 | [Flutter App Builder](skills/flutter-app-builder/) | ![Status](https://img.shields.io/badge/status-WIP-orange) | Production-quality Flutter apps with BLoC/Cubit, go_router, and complexity-aware architecture (Tier 1 simple / Tier 2 production) | [Quick install](#installation) |
 | [Skill Improvement](skills/skill-improvement/) | ![Status](https://img.shields.io/badge/status-tested-brightgreen) | Automatically detects skill gaps during sessions and proposes targeted patches — keeping skills accurate without manual maintenance | [Quick install](#installation) |
 | [Spec Sync](skills/spec-sync/) | ![Status](https://img.shields.io/badge/status-new-blue) | Keeps PRD and RFC documents in sync with code changes — detects drift via git diff and applies targeted edits. Includes a git-commit hook for automatic reminders | [Quick install](#installation) |
+| [Hero Copy](skills/hero-copy/) | ![Status](https://img.shields.io/badge/status-new-blue) | High-converting landing page hero copy — headlines, subheadlines, and CTAs that promise transformation instead of listing features | [Quick install](#installation) |
 | [ZETIC MLange SDK](skills/zetic-mlange/) | ![Status](https://img.shields.io/badge/status-untested-yellow) | On-device AI inference for Android & iOS — general models, LLMs, and HuggingFace integration with NPU acceleration | [Quick install](#installation) |
 
 ## What Are Claude Code Skills?
@@ -37,7 +38,7 @@ git clone https://github.com/mouchegmouradian/claude-code-skills.git
 cp -r claude-code-skills/skills/<skill-name> ~/.claude/skills/
 ```
 
-Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `flutter-app-builder`, `product-requirements-builder`, `orchestrator`, `skill-improvement`, `spec-sync`, `zetic-mlange`.
+Replace `<skill-name>` with one of: `ios-app-builder`, `android-app-builder`, `flutter-app-builder`, `product-requirements-builder`, `orchestrator`, `skill-improvement`, `spec-sync`, `hero-copy`, `zetic-mlange`.
 
 ### Install with symlinks (auto-update)
 
@@ -112,6 +113,13 @@ Once installed, skills activate automatically based on context. Just ask Claude 
 "The RFC is out of date"
 ```
 *(Also triggers automatically after git commits when PRD/RFC docs exist — via optional settings.json hook)*
+
+**Hero Copy**
+```
+"Write hero copy for my SaaS landing page"
+"Improve this headline and CTA"
+"Help me explain what my product does above the fold"
+```
 
 **ZETIC MLange SDK**
 ```
